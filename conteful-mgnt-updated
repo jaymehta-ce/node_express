@@ -1,0 +1,49 @@
+
+
+var contentful = require('contentful-management');
+
+var spaceId = 'u6pxao3c2t73';
+var accessToken = '2177a0f4ff5b13d147d5152cf26dc162dfbbac2f30ea2076943e2730bd914495';
+var contentTypeId = '1qMGnWoHqE2EwscGEaows4';
+
+var client = contentful.createClient({
+    accessToken: accessToken
+    
+});
+
+// a custom "Generic Content" content type
+var entry = {
+    fields: {
+        name: {
+            'en-US': "Take a Trip!"
+        },
+        description: {
+            'en-US': "Title for page 4"
+        },
+        content: {
+            'en-US': { title: "Take a Trip" }
+        }
+    }
+};
+
+module.exports = {
+    createEntrydata : function () {
+        
+        client.getSpace('xxibdgizewrj')
+    .then(function (space) {
+            space.createEntry('blogTitle', {
+                fields: {
+                    blogTitle: { 'en-US': 'Hello, World!' },
+                    blogDescriptioj: { 'en-US': 'demo' },
+                    category : {
+                        "en-US" : {
+                            "type": "Link",
+                            "linkType": "Entry",
+                            "id": "3KFr0iKAXCuuaWeGaKamEc"
+                        }
+                    }
+                }
+            })
+        });
+    }
+}
